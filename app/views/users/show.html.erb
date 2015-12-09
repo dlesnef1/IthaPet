@@ -1,10 +1,22 @@
 <% provide(:title, @user.name) %>
 <div class="row">
-  <aside class="col-md-4">
+  <div class="col-md-6">
     <section class="user_info">
       <h1>
         <%= @user.name %>
       </h1>
+      <%= link_to image_tag(@user.image, alt: "IthaPet logo"),
+            'http://www.spcaonline.com/' %>
     </section>
-  </aside>
+
+    <!-- Check if I have a pet to show, otherwise prompt to adopt a pet-->
+    <% if !@user.pet.nil? %>
+        <%= link_to image_tag(@user.pet.image, alt: @user.pet.name),
+            @user.pet %>
+        <% else %>
+            <%= link_to image_tag("AdoptAPet.jpg", alt: "Pets"),
+            pets_path %>
+    <% end %>
+
+  </div>
 </div>

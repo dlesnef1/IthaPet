@@ -1,0 +1,10 @@
+<li id="pet-<%= pet.id %>">
+  <span> <%= link_to pet.name, pet %> </span>
+  <span><%= pet.biography %></span>
+  <span><%= image_tag(pet.image, alt: pet.name, height: "120")%></span>
+  <span>
+      <% if pet.user.nil? %>
+            (available for adoption)
+      <% end %>
+  </span>
+</li>

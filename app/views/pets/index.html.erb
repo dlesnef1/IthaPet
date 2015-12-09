@@ -1,0 +1,13 @@
+<% provide(:title, "All Pets") %>
+<div class="row">
+
+  <div class="col-md-12">
+
+      <h3>Pets!</h3>
+      <ol class="pets">
+        <%= render @pets %>
+      </ol>
+      <%= will_paginate @pets %>
+
+  </div>
+</div>

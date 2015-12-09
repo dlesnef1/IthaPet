@@ -1,0 +1,37 @@
+<% provide(:title, @pet.name) %>
+<div class="row">
+  <div class="col-md-6">
+    <section>
+      <h1>
+        <%= @pet.name %>
+      </h1>
+      <%= link_to image_tag(@pet.image, alt: "IthaPet logo"),
+            'http://www.spcaonline.com/' %>
+    </section>
+
+
+    <% if logged_in? %>
+
+      <% if @pet.user.nil? %>
+          <% if current_user.pet.nil? %>
+
+            <%= form_for(@pet) do |f| %>
+              Adopt the pet!
+            <% end %>
+
+          <% else %>
+            you already have a pet silly
+          <% end %>
+      <% else %>
+      <% if current_user.pet == current_user %>
+          Interact with the pet
+      <% end %>
+
+      Proudly owned by: <%= @pet.user.name %>
+      <% end %>
+
+
+    <% end %>
+
+  </div>
+</div>
