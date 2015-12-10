@@ -1,0 +1,80 @@
+<% provide(:title, @pet.name) %>
+
+<div class="row">
+    <div class="col-md-4">
+        <div>
+            <h1>
+                <%= image_tag(@pet.image, alt: "IthaPet logo") %>
+            </h1>
+        </div>
+    </div>
+
+    <div class="col-md-8">
+        <div>
+            <h1>
+                Interact with your pet!
+            </h1>
+            <p>
+                <%= @pet.biography %>
+            </p>
+        </div>
+    </div>
+</div>
+
+
+<div class = "row">
+    <div class="col-md-3">
+        Happiness<br>
+        <%= @pet.happiness %>
+    </div>
+    <div class="col-md-3">
+        Hungriness<br>
+        <%= @pet.hungriness %>
+    </div>
+    <div class="col-md-3">
+        Cleanliness<br>
+        <%= @pet.cleanliness %>
+    </div>
+    <div class="col-md-3">
+        Loyalty<br>
+        <%= @pet.loyalty %>
+    </div>
+</div>
+
+
+<div class="row">
+    <div class="col-md-4">
+        <div>
+            <%= image_tag(howHappy(@pet), alt: "IthaPet logo") %>
+        </div>
+    </div>
+
+    <div class="col-md-2">
+
+            <%= form_for(@pet) do |f| %>
+
+            <%= f.submit name: "adopt",value: "Feed"%>
+            <% end %>
+    </div>
+    <div class="col-md-2">
+            <%= form_for(@pet) do |f| %>
+
+            <%= f.submit name: "adopt", value: "Walk" %>
+            <% end %>
+    </div>
+    <div class="col-md-2">
+            <%= form_for(@pet) do |f| %>
+
+            <%= f.submit name: "adopt", value: "Wash" %>
+            <% end %>
+    </div>
+    <div class="col-md-2">
+            <%= form_for(@pet) do |f| %>
+
+            <%= f.submit name: "adopt", value: "Pet" %>
+            <% end %>
+    </div>
+
+</div>
+
+

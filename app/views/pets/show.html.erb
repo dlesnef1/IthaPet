@@ -15,16 +15,23 @@
 
         <% if current_user.pet.nil? %>
           You should adopt this pet!
+
+          <div class="col-md-6 col-md-offset-3">
+            <%= form_for(@pet) do |f| %>
+
+            <%= f.button  :submit , name: "adopt",value: "TRUE"%>
+            <% end %>
+          </div>
+
         <% end %>
       <% else %>
-        <p> Proudly owned by: <%= current_user.name %> </p>
+        <p> Proudly owned by: <%= @pet.user.name %> </p>
       <% end %>
 
       <% if current_user.pet == @pet %>
-        <p> This is your pet, you should interact with it! </p>
+        <%= link_to "Make an Account!", ('/pets/'+current_user.pet.id.to_s + '/edit') %>
       <% end %>
 
     <% end %>
-
   </div>
 </div>
