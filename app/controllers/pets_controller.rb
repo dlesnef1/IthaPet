@@ -27,7 +27,7 @@ class PetsController < ApplicationController
                 return
             end
 
-            render "edit"
+            redirect_to :action => :edit
         else
             flash[:danger] = "Something went wrong!"
             redirect_to '/'

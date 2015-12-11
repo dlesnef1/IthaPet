@@ -2,10 +2,10 @@
 <div class="row">
   <div class="col-md-6">
     <section class="user_info">
-    
-      <h1 > 
+
+      <h1 >
       <p>
-        <%= link_to image_tag(@user.image, width: "100%", height: "300", alt: "IthaPet logo")%>
+        <%= link_to image_tag(@user.image, height: "300", alt: "IthaPet logo")%>
         </p>
         Hello
         <%= @user.name %>
@@ -17,7 +17,7 @@
   <p id="adopt" class="text-center">
     <!-- Check if I have a pet to show, otherwise prompt to adopt a pet-->
     <% if !@user.pet.nil? %>
-    
+
     <!-- update this for user adopt page -->
     <h1> Your Pet, <%= @user.pet.name %>
         <%= link_to image_tag(@user.pet.image, width: "300", height: "100%", alt: @user.pet.name),
@@ -26,10 +26,10 @@
         <% else %>
 
     	<h1 id="userAdopt">
-    	
+
 		Meet the Pets </br></br>
 		<%= link_to image_tag("AdoptAPet.jpg", width: "30%", height: "30%", alt: "Pets"),pets_path %>
-		
+
 		</h1>
 
     <% end %>
