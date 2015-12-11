@@ -77,4 +77,34 @@
 
 </div>
 
+<%= javascript_tag do %>
+    if (!String.prototype.contains) {
+        String.prototype.contains = function(s) {
+            return this.indexOf(s) > -1
+        }
+    }
+
+    var url = window.location.href;
+    setTimeout(function(){
+
+        var request = new XMLHttpRequest();
+
+        request.open('PATCH', 'http://localhost:3000/pets/1', /* async = */ false);
+
+        var formData = new FormData();
+        formData.append('adopt', 'Timer');
+        formData.append('action', 'update');
+        formData.append('id', 1);
+        formData.append('controller', 'pets');
+
+        console.log(formData);
+
+        if (url.contains('edit')) {
+            request.send(formData);
+            location.reload();
+        }
+
+    },10000);
+
+<% end %>
 

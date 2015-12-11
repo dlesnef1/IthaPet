@@ -8,5 +8,5 @@ class User < ActiveRecord::Base
 
     has_secure_password
     validates :password, presence: true, length: { minimum: 6 }, allow_nil: true
-    validates :image, presence: true, length: { maximum: 1000 }
+    validates :image, length: { maximum: 1000 }
 end

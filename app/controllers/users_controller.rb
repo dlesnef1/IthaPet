@@ -12,6 +12,11 @@ class UsersController < ApplicationController
 
   def create
     @user = User.new(user_params)
+
+    if @user.image.empty?
+      @user.image = 'http://vignette2.wikia.nocookie.net/lego/images/5/55/Scientists.jpg/revision/latest?cb=20110202015607'
+    end
+
     if @user.save
       log_in @user
       flash[:success] = "Welcome to IthaPet!"

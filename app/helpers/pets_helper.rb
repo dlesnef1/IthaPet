@@ -11,15 +11,19 @@ module PetsHelper
 
     def interact(pet, command)
         if command == "Feed"
-            pet.update(hungriness: pet.hungriness-10,
-                happiness: pet.happiness+5, cleanliness: pet.cleanliness-5, loyalty: pet.loyalty+5)
+            pet.update(hungriness: pet.hungriness-rand(10..25),
+                happiness: pet.happiness+rand(5..9), cleanliness: pet.cleanliness-rand(2..6), loyalty: pet.loyalty+rand(5..12))
         elsif command == "Wash"
-            pet.update(happiness: pet.happiness-5, cleanliness: pet.cleanliness+10, loyalty: pet.loyalty-5)
+            pet.update(happiness: pet.happiness-rand(10..13),
+                cleanliness: pet.cleanliness+rand(12..19), loyalty: pet.loyalty-rand(0..5))
         elsif command == "Walk"
-            pet.update(hungriness: pet.hungriness+5,
-                happiness: pet.happiness+10, cleanliness: pet.cleanliness-5, loyalty: pet.loyalty+5)
+            pet.update(hungriness: pet.hungriness+rand(2..6),
+                happiness: pet.happiness+rand(14..21), cleanliness: pet.cleanliness-rand(4..8), loyalty: pet.loyalty+rand(5..15))
         elsif command == "Pet"
             pet.update(happiness: pet.happiness+1, loyalty: pet.loyalty+1)
+        elsif command == "Timer"
+            pet.update(hungriness: pet.hungriness+rand(12..19),
+                happiness: pet.happiness-rand(5..12), cleanliness: pet.cleanliness-rand(0..3), loyalty: pet.loyalty-rand(0..2))
         end
         checkSums(pet)
     end
@@ -33,8 +37,8 @@ module PetsHelper
                 pet[attribute] = 0
             end
         end
+        pet.save
 
-        # bugs, but will be fixed soon
         if pet.hungriness > 80
             pet.update(user: nil, hungriness: 0, cleanliness: 100, happiness: 25, loyalty: 10)
             return "PETA would like a word with you! #{pet.name} is going to a better home!"

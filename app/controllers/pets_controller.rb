@@ -1,6 +1,7 @@
 class PetsController < ApplicationController
     include PetsHelper
 
+    skip_before_action :verify_authenticity_token
     before_action :logged_in_user, only: [:edit]
     before_action :correct_user,   only: [:edit]
 
@@ -35,6 +36,7 @@ class PetsController < ApplicationController
 
     def edit
         @pet = Pet.find(params[:id])
+        checkSums(@pet)
     end
 
     # Just for us to easily add pets
